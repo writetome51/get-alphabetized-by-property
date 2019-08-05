@@ -1,18 +1,18 @@
 
-# getAlphabetizedByProperty(property, objects): any[]
+# getAlphabetizedByProperty(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;property,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objects<br>): any[]
 
-Returns new array of `objects` ordered alphabetically by value of `property`.
+Returns new array of `objects` ordered alphabetically by value of `property`.  
 It coerces the value of each `object[property]` in `objects` into a string before  
 doing the sorting.  The values of the properties are not modifed.  
 Parameter `property` is a string that can include dot-notation  
-( 'property.subproperty.subsubproperty') .
+( `'property.subproperty.subsubproperty'`) .
 
 Note:  `property` does not have to be an object key.  It can also be an array index.  
 To refer to array indexes, here you need to use dot-notation and not  
 square braces.  Example: `'1.0' instead of [1][0]`
 
 ## Examples
-```
+```ts
 let roster = [
 	{name: 'Rod Carmichael', group: 'D'},
 	{name: 'Todd Garfunkel', group: 'B'},
@@ -150,10 +150,10 @@ Returns:
 ## Installation
 
 ```bash
-npm install @writetome51/get-alphabetized-by-property
+npm i  @writetome51/get-alphabetized-by-property
 ```
 ## Loading
-```
+```ts
 // If using TypeScript:
 import {getAlphabetizedByProperty} from '@writetome51/get-alphabetized-by-property';
 // If using ES5 JavaScript:
