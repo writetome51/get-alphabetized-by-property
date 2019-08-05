@@ -1,0 +1,37 @@
+{
+  "name": "@writetome51/get-alphabetized-by-property",
+  "version": "0.0.1",
+  "description": "Returns new array of objects ordered alphabetically by the value of a particular property",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/writetome51/get-alphabetized-by-property.git"
+  },
+  "keywords": [
+    "alphabetize",
+    "property",
+    "objects",
+    "array",
+    "alphabetical",
+    "order",
+    "sort"
+  ],
+  "author": "Steve Thompson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/writetome51/get-alphabetized-by-property/issues"
+  },
+  "homepage": "https://github.com/writetome51/get-alphabetized-by-property#readme",
+  "devDependencies": {
+    "@writetome51/arrays-match": "~1.0.6",
+    "@writetome51/get-array-from-property": "^1.1.1"
+  },
+  "dependencies": {
+    "@writetome51/alphabetize-by-property": "^2.0.2",
+    "@writetome51/array-get-copy": "^1.1.3"
+  }
+}
