@@ -1,18 +1,21 @@
+# getAlphabetizedByProperty(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;property: string,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objects: object[]<br>): object[]
 
-# getAlphabetizedByProperty(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;property,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;objects<br>): any[]
+Returns new array of `objects` ordered alphabetically by `property`.  
+It coerces the value of each `object[property]` in `objects` into a string to  
+do the sorting (the values of the properties are not modifed).  
+The sorting algorithm simply compares the unicode value of `property` in every 2  
+adjacent objects to decide which should come first, like so:  
+`return (String(aProp) < String(bProp) ? -1 : 1);`
 
-Returns new array of `objects` ordered alphabetically by value of `property`.  
-It coerces the value of each `object[property]` in `objects` into a string before  
-doing the sorting.  The values of the properties are not modifed.  
-Parameter `property` is a string that can include dot-notation  
-( `'property.subproperty.subsubproperty'`) .
-
-Note:  `property` does not have to be an object key.  It can also be an array index.  
-To refer to array indexes, here you need to use dot-notation and not  
-square braces.  Example: `'1.0' instead of [1][0]`
+Note:  in the results, all uppercase letters in the English alphabet come before  
+all lowercase letters.  
+Note:  `property` is a string that can include dot-notation  
+( 'property.subproperty.subsubproperty') . If `property` is an array index, here  
+you need to use dot-notation and not square braces.  Example:  
+`'1.0' // instead of [1][0]`
 
 ## Examples
-```ts
+```js
 let roster = [
 	{name: 'Rod Carmichael', group: 'D'},
 	{name: 'Todd Garfunkel', group: 'B'},
@@ -25,14 +28,13 @@ let roster = [
 getAlphabetizedByProperty('group', roster);
 /************
 Returns:
-
 [
-	{name: 'Mick Jagger', group: 'A'},
-	{name: 'Todd Garfunkel', group: 'B'},
-	{name: 'Flip Mavunkel', group: 'C'},
-	{name: 'Rod Carmichael', group: 'D'},
-	{name: 'Charlie Brown', group: 'D'},
-	{name: 'Rachel Green', group: 'E'}
+    {name: 'Mick Jagger', group: 'A'},
+    {name: 'Todd Garfunkel', group: 'B'},
+    {name: 'Flip Mavunkel', group: 'C'},
+    {name: 'Rod Carmichael', group: 'D'},
+    {name: 'Charlie Brown', group: 'D'},
+    {name: 'Rachel Green', group: 'E'}
 ]
 ************/
 
@@ -50,7 +52,6 @@ roster = [
 getAlphabetizedByProperty('player.name', roster);
 /************
 Returns:
-
 [ 
     { player: { name: 'Charlie' } },
     { player: { name: 'Flip' } },
@@ -77,13 +78,12 @@ roster =  [
 getAlphabetizedByProperty('group', roster);
 /************
 Returns:
-
 [
     { name: 'Flip Mavunkel', group: 'A' },
-    { name: 'Mick Jagger', group: 'Å' },
     { name: 'Rachel Green', group: 'I' },
-    { name: 'Todd Garfunkel', group: 'Í' },
     { name: 'Charlie Brown', group: 'O' },
+    { name: 'Mick Jagger', group: 'Å' },
+    { name: 'Todd Garfunkel', group: 'Í' },
     { name: 'Rod Carmichael', group: 'Ò' } 
 ]
 ************/
@@ -105,16 +105,15 @@ roster =  [
 getAlphabetizedByProperty('group', roster);
 /************
 Returns:
-
 [
     { name: 'Flip Mavunkel', group: 'A' },
-    { name: 'Mick Jagger', group: 'Å' },
+    { name: 'Farley Brown', group: 'Z' },
+    { name: 'Charlie Brown', group: 'ZZZ' },
     { name: 'Charlie Brown', group: null }, // null is treated as a string
     { name: 'Rod Carmichael', group: undefined }, // undefined is treated as a string
     { name: 'Rachel Green' }, // missing property is treated as 'undefined'
     { name: 'Todd Garfunkel', group: undefined },
-    { name: 'Farley Brown', group: 'Z' },
-    { name: 'Charlie Brown', group: 'ZZZ' } 
+    { name: 'Mick Jagger', group: 'Å' },
 ]
 ************/
 
@@ -135,7 +134,6 @@ let people = [
 getAlphabetizedByProperty('1.1', people);
 /************
 Returns:
-
 [
 	['pastor', ['terry', 'blank']],
 	['minister', ['ng', 'leung']],
@@ -148,15 +146,11 @@ Returns:
 ```
 
 ## Installation
-
 ```bash
 npm i  @writetome51/get-alphabetized-by-property
 ```
 ## Loading
-```ts
-// If using TypeScript:
-import {getAlphabetizedByProperty} from '@writetome51/get-alphabetized-by-property';
-// If using ES5 JavaScript:
-var getAlphabetizedByProperty = 
-	require('@writetome51/get-alphabetized-by-property').getAlphabetizedByProperty;
+```js
+import {getAlphabetizedByProperty} 
+    from '@writetome51/get-alphabetized-by-property';
 ```

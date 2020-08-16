@@ -1,1 +1,1 @@
-export declare function getAlphabetizedByProperty(property: string, objects: any[]): any[];
+export declare function getAlphabetizedByProperty(property: string, objects: object[]): object[];
